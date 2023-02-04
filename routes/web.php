@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Customer\ProductController as CustomerProductController;
 use App\Http\Controllers\Seller\ProductController as SellerProductController;
+use App\Http\Controllers\Seller\OrderController as SellerOrderController;
+use App\Http\Controllers\Customer\OrderController as CustomerOrderController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -42,23 +44,32 @@ Route::middleware('auth')->group(function () {
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 });
 
-//for customers
+//for customers [products]
 Route::controller(CustomerProductController::class)
-    ->prefix('/products')
-    ->as('products.')
-    ->middleware('auth')
+    ->prefix('/p')
+    ->as('p.customer.')
+    ->middleware(['auth', 'customer'])
     ->group(__DIR__ . '/products/customer/index.php');
 
 
-//for sellers
+//for sellers [products]
 Route::controller(SellerProductController::class)
-    ->prefix('/my_products')
-    ->as('my_products.')
+    ->prefix('/products')
+    ->as('products.seller.')
     ->middleware(['auth', 'seller'])
     ->group(__DIR__ . '/products/seller/index.php');
 
-Route::controller(OrderController::class)
+
+//for customers [orders]
+Route::controller(CustomerOrderController::class)
+    ->prefix('/o')
+    ->as('o.customer.')
+    ->middleware(['auth', 'customer'])
+    ->group(__DIR__ . '/orders/customer/index.php');
+
+//for sellers [orders]
+Route::controller(SellerOrderController::class)
     ->prefix('/orders')
-    ->as('orders.')
-    ->middleware('auth')
-    ->group(__DIR__ . '/orders/index.php');
+    ->as('orders.seller.')
+    ->middleware(['auth', 'seller'])
+    ->group(__DIR__ . '/orders/seller/index.php');

@@ -21,8 +21,8 @@
             @if(auth()->user()->type == \App\Enums\UserType::SELLER)
 
                 <li class="relative px-6 py-3">
-                    <x-nav-link href="{{ route('my_products.index') }}"
-                                :active="request()->routeIs('my_products.index')">
+                    <x-nav-link href="{{ route('products.seller.index') }}"
+                                :active="request()->routeIs('products.seller.index')">
                         <x-slot name="icon">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -37,8 +37,8 @@
             @elseif(auth()->user()->type == \App\Enums\UserType::CUSTOMER)
 
                 <li class="relative px-6 py-3">
-                    <x-nav-link href="{{ route('products.index') }}"
-                                :active="request()->routeIs('products.index')">
+                    <x-nav-link href="{{ route('p.customer.index') }}"
+                                :active="request()->routeIs('p.customer.index')">
                         <x-slot name="icon">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -53,35 +53,35 @@
             @endif
 
 
-{{--            @if(auth()->user()->type == \App\Enums\UserType::SELLER)--}}
+            @if(auth()->user()->type == \App\Enums\UserType::SELLER)
 
-{{--                <li class="relative px-6 py-3">--}}
-{{--                    <x-nav-link href="{{ route('orders.index') }}" :active="request()->routeIs('about')">--}}
-{{--                        <x-slot name="icon">--}}
-{{--                            <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"--}}
-{{--                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">--}}
-{{--                                <path--}}
-{{--                                    d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>--}}
-{{--                            </svg>--}}
-{{--                        </x-slot>--}}
-{{--                        {{ __('About us') }}--}}
-{{--                    </x-nav-link>--}}
-{{--                </li>--}}
-{{--            @elseif(auth()->user()->type == \App\Enums\UserType::CUSTOMER)--}}
+                <li class="relative px-6 py-3">
+                    <x-nav-link href="{{ route('orders.seller.index') }}" :active="request()->routeIs('orders.seller.index')">
+                        <x-slot name="icon">
+                            <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
+                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path
+                                    d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
+                            </svg>
+                        </x-slot>
+                        {{ __('Orders') }}
+                    </x-nav-link>
+                </li>
+            @elseif(auth()->user()->type == \App\Enums\UserType::CUSTOMER)
 
-{{--                <li class="relative px-6 py-3">--}}
-{{--                    <x-nav-link href="{{ route('about') }}" :active="request()->routeIs('about')">--}}
-{{--                        <x-slot name="icon">--}}
-{{--                            <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"--}}
-{{--                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">--}}
-{{--                                <path--}}
-{{--                                    d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>--}}
-{{--                            </svg>--}}
-{{--                        </x-slot>--}}
-{{--                        {{ __('About us') }}--}}
-{{--                    </x-nav-link>--}}
-{{--                </li>--}}
-{{--            @endif--}}
+                <li class="relative px-6 py-3">
+                    <x-nav-link href="{{ route('o.customer.index') }}" :active="request()->routeIs('orders.customer.index')">
+                        <x-slot name="icon">
+                            <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
+                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path
+                                    d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
+                            </svg>
+                        </x-slot>
+                        {{ __('Orders') }}
+                    </x-nav-link>
+                </li>
+            @endif
 
 
 

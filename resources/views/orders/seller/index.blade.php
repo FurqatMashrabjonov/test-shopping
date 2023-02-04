@@ -33,44 +33,29 @@
                 <table class="w-full whitespace-no-wrap">
                     <thead>
                     <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase bg-gray-50 border-b">
-                        <th class="px-4 py-3">Name</th>
-                        <th class="px-4 py-3">From price</th>
-                        <th class="px-4 py-3">To price</th>
-                        <th class="px-4 py-3">Status</th>
-                        <th class="px-4 py-3">Created Date</th>
+                        <th class="px-4 py-3">Ordered By</th>
+                        <th class="px-4 py-3">Product Name</th>
+                        <th class="px-4 py-3">Ordered Date</th>
                     </tr>
                     </thead>
                     <tbody class="bg-white divide-y">
-                    @foreach($products as $product)
+                    @foreach($orders as $order)
                         <tr class="text-gray-700">
                             <td class="px-4 py-3 text-sm">
-                                {{ $product->name }}
+                                {{ $order->user->name }}
                             </td>
                             <td class="px-4 py-3 text-sm">
-                                {{ $product->from_price }}
+                                {{ $order->product->name }}
                             </td>
                             <td class="px-4 py-3 text-sm">
-                                {{ $product->to_price }}
-                            </td>
-                            <td class="px-4 py-3 text-sm">
-                                @if($product->status == \App\Enums\ProductStatus::NEW)
-                                    NEW
-                                @elseif($product->status == \App\Enums\ProductStatus::OLD)
-                                    OLD
-                                @endif
-                            </td>
-                            <td class="px-4 py-3 text-sm">
-                                {{\Illuminate\Support\Carbon::parse($product->created_at)->diffForHumans()}}
+                                {{\Illuminate\Support\Carbon::parse($order->created_at)->diffForHumans()}}
                             </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
             </div>
-            <div
-                class="px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase bg-gray-50 border-t sm:grid-cols-9">
-                {{ $products->links() }}
-            </div>
+
         </div>
 
     </div>

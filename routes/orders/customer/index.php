@@ -3,4 +3,4 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'index');
+Route::get('/', 'index')->name('index');
